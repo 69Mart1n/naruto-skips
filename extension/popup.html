@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>De Naruto Skips</title><link rel="stylesheet" href="popup.css"></head>
+<body>
+  <header>
+    <img class="header-cloud sticker" src="assets/akatsuki.png" alt="" aria-hidden="true">
+    <div class="brand"><img class="brand-icon" src="assets/icon-48.png" alt=""><span class="eyebrow">TU CAMINO NINJA <span class="beta">BETA 0.3.2</span></span></div>
+    <h1>De Naruto<br><span>Skips</span></h1>
+    <p>Seguí la historia.<br>Saltá las pausas.</p>
+    <img class="kurama sticker" src="assets/kurama.png" alt="" aria-hidden="true">
+    <div class="header-tag">MENOS RELLENO. MÁS CAMINO NINJA.</div>
+  </header>
+  <main>
+    <section class="status" aria-live="polite"><strong id="episode">Buscando episodio…</strong><p id="reason">Abrí Netflix o Crunchyroll.</p></section>
+    <section class="panel automation">
+    <div class="section-heading"><h2>Modo ninja</h2><img class="cloud-badge sticker" src="assets/akatsuki.png" alt="" aria-hidden="true"></div>
+    <div class="controls">
+      <label><span>Automatización</span><input id="enabled" type="checkbox" role="switch"></label>
+      <label><span>Saltar intro</span><input id="skipIntro" type="checkbox" role="switch"></label>
+      <label><span>Saltar resumen</span><input id="skipRecap" type="checkbox" role="switch"></label>
+      <label><span>Siguiente al final</span><input id="nextEpisode" type="checkbox" role="switch"></label>
+      <label><span>Saltar según la guía</span><input id="skipFiller" type="checkbox" role="switch"></label>
+    </div>
+    </section>
+    <section class="panel guide">
+    <div class="section-heading"><h2>Tu ruta de capítulos</h2><img class="hat-badge sticker" src="assets/hokage.png" alt="" aria-hidden="true"></div>
+    <label class="guide-label" for="watchProfile">Guía de capítulos</label>
+    <select id="watchProfile"><option value="user-list">Tu lista</option><option value="full-filler">Solo relleno completo</option></select>
+    <p class="note" id="guideNote">Tu lista también omite algunos capítulos mixtos. Naruto 135 se conserva.</p>
+    </section>
+    <section class="panel scenes"><div class="section-heading"><h2>A tu ritmo</h2><img class="fan-badge sticker" src="assets/uchiha.png" alt="" aria-hidden="true"></div><label class="guide-label" for="playbackSpeed">Velocidad habitual</label><select id="playbackSpeed"><option value="1">Normal · 1×</option><option value="1.25">1,25×</option><option value="1.5">1,5×</option><option value="2">2×</option></select><p class="note">Mantené <kbd>V</kbd> para acelerar a 2× y soltá para volver.</p><label class="scene-toggle"><span>Acelerar tramos guardados</span><input id="accelerateScenes" type="checkbox" role="switch"></label><p id="mediaStatus" class="note">Esperando video…</p><div class="row"><button id="markStart" type="button">Marcar inicio</button><button id="markEnd" type="button">Marcar final</button></div><button id="clearScenes" type="button">Borrar tramos de este capítulo</button><p class="note">Los tramos se guardan para esta versión del capítulo. No se recortan escenas sin marcas.</p></section>
+    <details id="manual"><summary>Corregir detección manualmente</summary><form id="calibration"><label for="absolute">Capítulo absoluto actual</label><div class="row"><input id="absolute" type="number" min="1" max="500" required placeholder="Ej. 303"><button type="submit">Confirmar</button></div><p class="note">Sólo si no se reconoce el episodio. Netflix usa los identificadores de los 720 capítulos del catálogo verificado.</p></form></details>
+    <div class="row actions"><button id="keep" type="button">Ver este capítulo</button><button id="retry" type="button">Reintentar</button></div>
+    <p id="feedback" aria-live="polite"></p>
+    <footer><img class="spiral sticker" src="assets/uzumaki.png" alt="" aria-hidden="true"><div>Netflix · Crunchyroll experimental<br>Todo se procesa en tu navegador.</div><span class="footer-mark">忍</span></footer>
+  </main>
+  <script src="popup.js"></script>
+</body></html>

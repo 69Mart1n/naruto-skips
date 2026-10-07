@@ -1,0 +1,13 @@
+import { mkdir, cp, writeFile, readFile } from 'node:fs/promises';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+await mkdir(resolve(root, 'dist/extension/data'), { recursive: true });
+await cp(resolve(root, 'extension'), resolve(root, 'dist/extension'), { recursive: true });
+const raw = await readFile(resolve(root, 'data/episodes.json'), 'utf8');
+await writeFile(resolve(root, 'dist/extension/data/episodes.js'), `globalThis.NarutoData = ${raw};\n`);
+const catalog = await readFile(resolve(root, 'data/netflix-catalog.json'), 'utf8');
+await writeFile(resolve(root, 'dist/extension/data/netflix-catalog.js'), `globalThis.NarutoNetflixCatalog = ${catalog};\n`);
+await cp(resolve(root, 'INSTALAR.md'), resolve(root, 'dist/extension/INSTALAR.md'));
+await cp(resolve(root, 'GUIA_PERSONALIZADA.md'), resolve(root, 'dist/extension/GUIA_PERSONALIZADA.md'));
+console.log('Paquete preparado en dist/extension.');

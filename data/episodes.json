@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 2,
+  "researchedOn": "2026-10-06",
+  "policy": "Classification is separate from viewing policy. Use the selected profile to decide skips.",
+  "profiles": {
+    "full-filler": {
+      "name": "Solo relleno completo",
+      "description": "Conserva capítulos mixtos y canon del anime."
+    },
+    "user-list": {
+      "name": "Tu lista",
+      "source": "https://www.pccomponentes.com/blog/como-ver-anime-naruto-completo-sin-relleno",
+      "providedBy": "Usuario en esta conversación",
+      "description": "Sigue tu guía, incluyendo los capítulos mixtos que marcaste para saltar.",
+      "normalization": "Naruto 135 aparece para ver y para saltar. Se conserva; el salto comienza en 136.",
+      "skipRanges": {
+        "naruto": [[26,26],[97,97],[101,106],[136,219]],
+        "naruto-shippuden": [[57,70],[90,111],[144,151],[170,171],[176,196],[223,242],[258,260],[279,281],[284,295],[303,320],[347,361],[376,377],[389,390],[394,413],[416,417],[419,419],[422,423],[427,457],[460,462],[464,468],[480,483]]
+      }
+    }
+  },
+  "series": {
+    "naruto-shippuden": {
+      "name": "Naruto Shippuden",
+      "totalEpisodes": 500,
+      "source": "https://www.animefillerlist.com/shows/naruto-shippuden",
+      "sourceUpdatedOn": "2024-09-03",
+      "fillerRanges": [[57,71],[91,112],[144,151],[170,171],[176,196],[223,242],[257,260],[271,271],[279,281],[284,295],[303,320],[347,361],[376,377],[388,390],[394,413],[416,417],[422,423],[427,450],[464,468],[480,483]],
+      "mixedRanges": [[1,19],[24,25],[45,45],[49,50],[54,54],[56,56],[89,90],[113,113],[115,115],[127,128],[213,213],[254,254],[296,296],[324,324],[327,328],[330,331],[338,338],[346,346],[362,362],[385,386],[415,415],[419,419],[426,426],[451,458],[460,462],[469,469],[471,472],[478,479]],
+      "animeCanonRanges": [[28,28]],
+      "classificationDisagreements": [{"episode":28,"selected":"anime-canon","alternative":"filler","alternativeSource":"https://www.animefillerlist.tv/guide/naruto-shippuden/"}]
+    },
+    "naruto": {
+      "name": "Naruto",
+      "totalEpisodes": 220,
+      "source": "https://www.animefillerlist.com/shows/naruto",
+      "sourceUpdatedOn": "2024-04-14",
+      "fillerRanges": [[26,26],[97,97],[101,106],[136,140],[143,219]],
+      "mixedRanges": [[7,7],[9,9],[14,16],[18,21],[23,24],[27,30],[37,41],[43,47],[49,49],[52,60],[63,63],[66,66],[69,72],[74,74],[83,83],[98,100],[112,114],[126,127],[130,131],[141,142],[220,220]],
+      "animeCanonRanges": []
+    }
+  }
+}
