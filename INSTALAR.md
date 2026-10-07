@@ -1,6 +1,6 @@
-# Instalar De Naruto Skips — Beta 0.3.2
+# Instalar Naruto Skips — Beta 0.3.3
 
-Esta versión incorpora el ícono N y el panel con stickers Naruto. Si ya cargaste `dist/extension`, abrí la página de extensiones, tocá **Recargar** en De Naruto Skips y volvé a abrir el panel. No necesitás reinstalar ni perder tus preferencias.
+Esta versión cambia el nombre a Naruto Skips y conserva el ícono N y el panel con stickers Naruto. Si ya cargaste `dist/extension`, abrí la página de extensiones, tocá **Recargar** en la extensión (puede figurar todavía como De Naruto Skips) y volvé a abrir el panel. No necesitás reinstalar ni perder tus preferencias.
 
 ## En esta computadora: sin descargar ni descomprimir
 
@@ -13,7 +13,7 @@ La carpeta está preparada. No la borres después de instalar. En Brave, el mism
 
 ## En otra computadora
 
-Descargá `de-naruto-skips-0.3.2.zip`, descomprimilo en una carpeta permanente y cargá la carpeta que contiene `manifest.json` siguiendo los pasos anteriores. La descarga actual de 0.3.2 incluye el ícono N y todos los stickers. No está publicada en Chrome Web Store.
+Descargá `naruto-skips-0.3.3.zip`, descomprimilo en una carpeta permanente y cargá la carpeta que contiene `manifest.json` siguiendo los pasos anteriores. No está publicada en Chrome Web Store.
 
 ## Uso automático
 

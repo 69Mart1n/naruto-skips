@@ -1,12 +1,12 @@
-# De Naruto Skips
+# Naruto Skips
 
 Extensión para Chrome y Brave que automatiza intros, resúmenes y cambios de capítulo de Naruto y Naruto Shippuden. Netflix es la plataforma principal; Crunchyroll es experimental.
 
-La beta **0.3.2** incluye el ícono N y un panel Naruto con naranja, rojo, nubes Akatsuki y stickers de Kurama, Hokage, Uchiha y Uzumaki.
+La beta **0.3.3** incluye el ícono N y un panel Naruto con naranja, rojo, nubes Akatsuki y stickers de Kurama, Hokage, Uchiha y Uzumaki.
 
 ## Descargar e instalar
 
-Descargá el ZIP desde [Releases](https://github.com/69Mart1n/de-naruto-skips/releases). También está disponible una [descarga directa de la versión 0.3.2](https://files.catbox.moe/2pvj7r.zip).
+Descargá el ZIP desde [Releases](https://github.com/69Mart1n/naruto-skips/releases). También está disponible la [descarga directa de la versión 0.3.3](https://github.com/69Mart1n/naruto-skips/releases/download/v0.3.3/naruto-skips-0.3.3.zip).
 
 1. Descomprimí el ZIP en una carpeta permanente.
 2. Abrí `chrome://extensions` en Chrome o `brave://extensions` en Brave.
@@ -36,7 +36,7 @@ npm test
 npm run build
 ```
 
-La carpeta `dist/extension` generada se puede cargar como extensión descomprimida. `extension/` contiene el código y las imágenes; `data/` contiene la clasificación y las correspondencias de Netflix; `tests/` verifica la lógica y el comportamiento del reproductor con DOM simulado. Este repositorio contiene el código completo de la versión 0.3.2.
+La carpeta `dist/extension` generada se puede cargar como extensión descomprimida. `extension/` contiene el código y las imágenes; `data/` contiene la clasificación y las correspondencias de Netflix; `tests/` verifica la lógica y el comportamiento del reproductor con DOM simulado. Este repositorio contiene el código completo de la versión 0.3.3.
 
 ## Estado y privacidad
 

@@ -81,7 +81,7 @@
       if (settings.nextEpisode && state.episode !== D.series[state.series]?.totalEpisodes) startNavigation(adapter.endNext(), state);
     } catch (error) {
       if (isTop) status.reason = 'No se pudo leer el reproductor. Recargá la página.';
-      console.debug('[De Naruto Skips]', error.message);
+      console.debug('[Naruto Skips]', error.message);
     } finally { running = false; }
   }
   function schedule() { if (timeout === null) timeout = setTimeout(() => { timeout = null; void scan(); }, 200); }

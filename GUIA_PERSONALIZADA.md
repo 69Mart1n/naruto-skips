@@ -1,6 +1,6 @@
 # Guía personalizada
 
-La opción «Tu lista» sigue la lista rápida del [artículo de PcComponentes](https://www.pccomponentes.com/blog/como-ver-anime-naruto-completo-sin-relleno), elegida para este proyecto. Se selecciona por defecto en De Naruto Skips. Los saltos vienen activados en una instalación nueva y pueden pausarse desde el panel.
+La opción «Tu lista» sigue la lista rápida del [artículo de PcComponentes](https://www.pccomponentes.com/blog/como-ver-anime-naruto-completo-sin-relleno), elegida para este proyecto. Se selecciona por defecto en Naruto Skips. Los saltos vienen activados en una instalación nueva y pueden pausarse desde el panel.
 
 ## Naruto original
 
