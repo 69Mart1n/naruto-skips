@@ -36,3 +36,30 @@ test('exceptions override both guides and unknown guide never skips', () => {
   assert.equal(C.shouldSkip(data,'naruto-shippuden',284,[],'unknown'),false);
   for (const ep of [0,501,null,'419']) assert.equal(C.shouldSkip(data,'naruto-shippuden',ep,[],'user-list'),false);
 });
+
+test('One Piece custom guide matches every range supplied by the user and preserves the rest', () => {
+  // Transcribed by arc, independently of the merged ranges in episodes.json.
+  const arcs = [[54,60],[98,99],[102,102],[131,135],[136,138],[139,143],[196,206],[220,224],[225,226],[279,283],[291,292],[303,303],[317,319],[326,336],[382,384],[406,407],[426,429],[457,458],[492,492],[499,499],[506,506],[542,542],[575,578],[590,590],[626,628],[747,750],[751,751],[775,775],[780,782],[895,896],[907,907],[1029,1030]];
+  let skipped = 0;
+  const added = [];
+  for (let ep = 1; ep <= data.series['one-piece'].totalEpisodes; ep++) {
+    const expected = arcs.some(([a,b]) => ep >= a && ep <= b);
+    assert.equal(C.shouldSkip(data,'one-piece',ep,[],'user-list'),expected,`One Piece ${ep}`);
+    if (expected) skipped++;
+    if (expected && !C.shouldSkip(data,'one-piece',ep,[],'full-filler')) added.push(ep);
+  }
+  assert.equal(skipped,100);
+  assert.deepEqual(added,[226,499,506,628,751,775]);
+  for (const ep of [226,628,751]) assert.equal(C.classify(data,'one-piece',ep),'mixed');
+  for (const ep of [499,506,775,1084]) assert.equal(C.classify(data,'one-piece',ep),'anime-canon');
+  assert.equal(C.targetEpisode(data,'one-piece',1084,[],'user-list'),1084);
+});
+
+test('One Piece skips whole contiguous arcs and respects a retained episode inside an arc', () => {
+  for (const [start,end,target] of [[54,60,61],[131,143,144],[196,206,207],[220,226,227],[326,336,337],[626,628,629],[747,751,752],[1029,1030,1031]]) {
+    for (let ep = start; ep <= end; ep++) assert.equal(C.targetEpisode(data,'one-piece',ep,[],'user-list'),target);
+    assert.equal(C.targetEpisode(data,'one-piece',target,[],'user-list'),target);
+  }
+  assert.equal(C.targetEpisode(data,'one-piece',196,[200],'user-list'),200);
+  assert.equal(C.shouldSkip(data,'one-piece',200,[200],'user-list'),false);
+});

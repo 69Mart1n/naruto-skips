@@ -1,19 +1,29 @@
-# Instalar Naruto Skips — Beta 0.3.3
+# Instalar Anime Skips — Beta local 0.4.0
 
-Esta versión cambia el nombre a Naruto Skips y conserva el ícono N y el panel con stickers Naruto. Si ya cargaste `dist/extension`, abrí la página de extensiones, tocá **Recargar** en la extensión (puede figurar todavía como De Naruto Skips) y volvé a abrir el panel. No necesitás reinstalar ni perder tus preferencias.
+La carpeta que debés seleccionar es **`naruto-skips-main`**, con `manifest.json` directamente dentro. Incluye los datos preparados; para instalar no necesitás Node.js ni ejecutar comandos. En Chrome figura como **Anime Skips**, versión 0.4.0; conserva las funciones de Naruto Skips.
 
-## En esta computadora: sin descargar ni descomprimir
+## Instalar desde el ZIP o desde el código descargado
 
-1. Abrí `chrome://extensions` en Chrome.
-2. Activá **Modo desarrollador** y elegí **Cargar descomprimida**.
-3. Seleccioná la carpeta `dist/extension` del proyecto, donde está `manifest.json`.
-4. Recargá la pestaña donde estás viendo Naruto.
+1. Descargá el [ZIP actualizado del repositorio](https://github.com/69Mart1n/naruto-skips/archive/refs/heads/main.zip) o usá `naruto-skips-0.4.0-instalable.zip`. Descomprimilo en una ubicación permanente. Ambos contienen una sola carpeta: **`naruto-skips-main`**.
+2. Abrí `chrome://extensions` en Chrome y activá **Modo desarrollador**.
+3. Elegí **Cargar descomprimida** y seleccioná **`naruto-skips-main`**, la carpeta que contiene `manifest.json`. No selecciones su subcarpeta `extension` ni el ZIP.
+4. Recargá la pestaña de Netflix o Crunchyroll.
 
-La carpeta está preparada. No la borres después de instalar. En Brave, el mismo procedimiento se hace en `brave://extensions`.
+Si tu proyecto está en `C:\Users\rossi\OneDrive\Desktop\naruto-skips-main`, esa es la carpeta que seleccionás. En esta computadora la copia reparada está en `C:\Users\bonyc\Documents\ChatGPT\Extencion de Naruto`; su raíz también se puede cargar directamente. No borres ni muevas la carpeta después de instalar. En Brave, el mismo procedimiento se hace en `brave://extensions`.
 
-## En otra computadora
+## Actualizar sin cambiar la carpeta instalada
 
-Descargá `naruto-skips-0.3.3.zip`, descomprimilo en una carpeta permanente y cargá la carpeta que contiene `manifest.json` siguiendo los pasos anteriores. No está publicada en Chrome Web Store.
+Copiá el contenido de la nueva `naruto-skips-main` sobre la **misma carpeta** que Chrome ya usa; reemplazá los archivos. Tocá **Recargar** en la tarjeta de la extensión y recargá el reproductor. No elimines la extensión: conservar la misma ruta y entrada permite mantener ajustes, excepciones y marcas. Evitá crear `naruto-skips-main/naruto-skips-main` por accidente.
+
+Si ya usabas la ruta antigua `dist/extension`, mantené esa instalación y ejecutá `npm run build` desde el proyecto para actualizarla; después recargala. Cambiar de esa ruta a la raíz puede crear otra identidad y otros ajustes en Chrome. Para instalaciones nuevas usá únicamente **`naruto-skips-main`**.
+
+No está publicada en Chrome Web Store. El código reparado se distribuye desde la rama `main`; las releases anteriores conservan sus paquetes originales.
+
+## Elegir anime y diseño
+
+Tocá **Cambiar anime** para abrir las siete tarjetas con stickers y nombres completos. Elegí una para cambiar los colores, la decoración y la guía que consultás; vuelve al panel y guarda la elección. **Seguir reproductor** hace que el diseño cambie con la serie detectada. **Volver** o Escape regresan sin cambiar la selección. Naruto y Shippuden conservan el diseño original con Kurama y los detalles ninja. El estado indica el anime que se está reproduciendo: explorar otro diseño no cambia la guía aplicada al video.
+
+Las listas exactas están dentro del panel, en **Tu ruta de capítulos**, y en [CATALOGO_ANIME.md](CATALOGO_ANIME.md).
 
 ## Uso automático
 
@@ -24,6 +34,8 @@ Netflix reconoce por identificador los 220 capítulos de Naruto y 500 de Shippud
 Si Netflix usa otro identificador o muestra información contradictoria, la extensión conserva el capítulo y permite corregir la detección desde el panel. La corrección manual es una alternativa para capítulos desconocidos; no reemplaza los identificadores verificados. Si se bloquea un salto sin confirmar, **Reintentar** lo habilita otra vez.
 
 **Tu lista** sigue la guía que proporcionaste y omite también algunos capítulos mixtos. Conserva Naruto 135 y omite 136–219. **Solo relleno completo** conserva todos los mixtos. **Ver este capítulo** agrega una excepción; para usarlo antes de un salto automático, pausá primero la automatización.
+
+En One Piece, **Tu lista** salta automáticamente los 100 capítulos que proporcionaste, incluidos los arcos completos de relleno, y conserva el 1084. En Bleach, Dragon Ball, Dragon Ball Z y Black Clover se aplica **Solo relleno completo**, incluso si tu preferencia guardada es **Tu lista**. Cuando no se reconoce el capítulo, mostrá los controles y confirmá el número absoluto en el panel. Esa confirmación se guarda por plataforma, serie y temporada. En Netflix, One Piece requiere confirmación por cada URL desconocida: sólo el anime, nunca el live action. El salto continuo de sus arcos sin esas confirmaciones todavía necesita un catálogo de Netflix verificado.
 
 ## Escenas lentas
 
@@ -36,7 +48,7 @@ No se recortan silencios, planos largos ni recuerdos por una suposición automá
 
 ## Alcance de la beta
 
-Se verificó el catálogo real de Netflix y hay 32 pruebas automatizadas de lógica, DOM simulado, velocidad, marcas y comunicación entre frames. La carga de la extensión y la reproducción continua con una cuenta real siguen pendientes de verificación.
+Se verificó el catálogo real de Netflix de Naruto y Shippuden y hay 48 pruebas automatizadas, incluido el salto de G-8 196–206 → 207 en un reproductor simulado y la integridad del paquete instalable. Las guías de los otros cinco animes están cargadas; sus catálogos y la reproducción continua con una cuenta real siguen pendientes de verificación. [REPARACION_INSTALACION.md](REPARACION_INSTALACION.md) distingue las comprobaciones de instalación de la carga real pendiente en Chrome.
 
 Crunchyroll reconoce las series oficiales Naruto/Shippuden y sus números absolutos sin etiqueta de temporada. La navegación usa el enlace siguiente comprobado; avanza uno por uno dentro de un bloque. Sus controles de reproducción y velocidad dentro de frames son experimentales y necesitan prueba con cuenta.
 

@@ -5,6 +5,11 @@
     if (/\bboruto\b/.test(text)) return null;
     if (/^naruto\s*[:：-]?\s*shipp[uū]den$/.test(text)) return 'naruto-shippuden';
     if (text === 'naruto') return 'naruto';
+    if (text === 'one piece') return 'one-piece';
+    if (text === 'bleach') return 'bleach';
+    if (/^dragon\s*ball\s+z$/.test(text)) return 'dragon-ball-z';
+    if (/^dragon\s*ball$/.test(text)) return 'dragon-ball';
+    if (text === 'black clover') return 'black-clover';
     return null;
   }
   function parsePosition(value) {
@@ -17,6 +22,11 @@
     return { season: season ? Number(season[1]) : null, episode: Number(episode[1]) };
   }
   const inRanges = (number, ranges) => ranges.some(([start, end]) => number >= start && number <= end);
+  function effectiveProfile(data, profile, series) {
+    const record = data.profiles?.[profile];
+    if (record?.fallback && data.series[series] && !Array.isArray(record.skipRanges?.[series])) return record.fallback;
+    return profile;
+  }
   function classify(data, series, episode) {
     const record = data.series[series];
     if (!record || !Number.isInteger(episode) || episode < 1 || episode > record.totalEpisodes) return null;
@@ -27,6 +37,7 @@
   }
   function shouldSkip(data, series, episode, keep = [], profile = 'full-filler') {
     if (!classify(data, series, episode) || keep.includes(episode)) return false;
+    profile = effectiveProfile(data, profile, series);
     if (profile === 'full-filler') return inRanges(episode, data.series[series].fillerRanges);
     const ranges = data.profiles?.[profile]?.skipRanges?.[series];
     return Array.isArray(ranges) && inRanges(episode, ranges);
@@ -38,10 +49,10 @@
     return classify(data, series, target) ? target : null;
   }
   // Season offsets are scoped to a platform, series and visible season. No inferred counters.
-  function mappingKey(platform, series, season) { return `${platform}:${series}:${season ?? 'unlabelled'}`; }
-  function absoluteEpisode(platform, series, position, mappings, data) {
+  function mappingKey(platform, series, season, scope) { return `${platform}:${series}:${season ?? 'unlabelled'}${scope ? `:${scope}` : ''}`; }
+  function absoluteEpisode(platform, series, position, mappings, data, scope) {
     if (!position) return null;
-    const offset = mappings[mappingKey(platform, series, position.season)];
+    const offset = mappings[mappingKey(platform, series, position.season, scope)];
     if (!Number.isInteger(offset)) return null;
     const absolute = position.episode + offset;
     return classify(data, series, absolute) ? absolute : null;
@@ -66,5 +77,5 @@
     const run = catalog?.series?.[series]?.idRuns.find(([first,last]) => episode >= first && episode <= last);
     return run ? String(run[2]+episode-run[0]) : null;
   }
-  globalThis.NarutoCore = { normalize, identifySeries, parsePosition, classify, shouldSkip, targetEpisode, mappingKey, absoluteEpisode, catalogEntry, catalogVideoId };
+  globalThis.NarutoCore = { normalize, identifySeries, parsePosition, classify, effectiveProfile, shouldSkip, targetEpisode, mappingKey, absoluteEpisode, catalogEntry, catalogVideoId };
 })();

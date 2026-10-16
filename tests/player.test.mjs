@@ -174,3 +174,70 @@ test('custom guide keeps episode 271 while full filler skips it', async () => {
     finally { r.w.close(); }
   }
 });
+
+test('each new anime requires a confirmed season map and then applies its effective guide',async()=>{
+  for(const [id,name,episode,target] of [['one-piece','One Piece',54,61],['bleach','Bleach',64,109],['dragon-ball','Dragon Ball',30,34],['dragon-ball-z','Dragon Ball Z',108,118],['black-clover','Black Clover',142,150]]) {
+    const markup=crunchyroll(episode).replace('GYQ4MW246','OTHERID').replace('Naruto Shippuden',name);
+    const r=await runtime(markup,'https://www.crunchyroll.com/es/watch/VALID1/episode',{watchProfile:'user-list',skipFiller:true});
+    try {
+      const before=await r.message({type:'status'});
+      assert.equal(before.series,id);
+      assert.equal(before.episode,null);
+      await r.tick(2000);assert.equal(r.clicks.title,undefined);
+      assert.equal((await r.message({type:'calibrate',key:before.key,episode})).ok,true);
+      const confirmed=await r.message({type:'status'});
+      assert.equal(confirmed.watchProfile,id === 'one-piece' ? 'user-list' : 'full-filler');assert.equal(confirmed.target,target);
+      await r.tick(3000);await r.tick(5000);
+      assert.equal(r.clicks.title,1);
+    } finally {r.w.close();}
+  }
+});
+
+test('One Piece automatically walks the whole G-8 arc and stops at 207',async()=>{
+  const markup=crunchyroll(196).replace('GYQ4MW246','OTHERID').replace('Naruto Shippuden','One Piece');
+  const r=await runtime(markup,'https://www.crunchyroll.com/es/watch/ARC196/episode',{watchProfile:'user-list',skipFiller:true});
+  try {
+    const before=await r.message({type:'status'});
+    assert.equal((await r.message({type:'calibrate',key:before.key,episode:196})).ok,true);
+    let time=2000;
+    for (let ep=196;ep<=207;ep++) {
+      r.dom.reconfigure({url:`https://www.crunchyroll.com/es/watch/ARC${ep}/episode`});
+      r.w.document.querySelector('h1.title').textContent=`E${ep} - Ejemplo`;
+      r.w.document.querySelector('[data-t="next-episode"]').innerHTML=`<a class="title" href="/es/watch/ARC${ep+1}/episode">Siguiente Episodio</a><a aria-label="Reproducir Episodio ${ep+1} - Ejemplo"></a>`;
+      await r.tick(time);await r.tick(time+2000);time+=4000;
+      const state=await r.message({type:'status'});
+      assert.equal(state.episode,ep);
+      assert.equal(state.omit,ep<207);
+      assert.equal(state.target,207);
+      assert.equal(r.clicks.title,Math.min(ep-195,11));
+    }
+  } finally {r.w.close();}
+});
+
+test('One Piece custom extra skips are automatic, while full filler, disable and exceptions retain them',async()=>{
+  for (const settings of [{watchProfile:'user-list'},{watchProfile:'full-filler'},{watchProfile:'user-list',skipFiller:false},{watchProfile:'user-list',keep:{'one-piece':[226]}}]) {
+    const markup=crunchyroll(226).replace('GYQ4MW246','OTHERID').replace('Naruto Shippuden','One Piece');
+    const r=await runtime(markup,'https://www.crunchyroll.com/es/watch/ARC226/episode',{skipFiller:true,...settings});
+    try {
+      const before=await r.message({type:'status'});
+      assert.equal((await r.message({type:'calibrate',key:before.key,episode:226})).ok,true);
+      assert.equal((await r.message({type:'status'})).type,'mixed');
+      await r.tick(2000);await r.tick(4000);
+      assert.equal(r.clicks.title,settings.watchProfile==='user-list' && settings.skipFiller!==false && !settings.keep ? 1 : undefined);
+    } finally {r.w.close();}
+  }
+});
+
+test('Netflix One Piece confirmation cannot leak from anime into a different live-action route',async()=>{
+  const markup='<div class="video-title"><h4>ONE PIECE</h4><span>T1:E1</span></div><button id="next" data-uia="control-next">Next</button><button id="intro" data-uia="player-skip-intro">Intro</button>';
+  const r=await runtime(markup,'https://www.netflix.com/watch/9001',{watchProfile:'user-list',mappings:{'netflix:one-piece:1':53}});
+  try {
+    const before=await r.message({type:'status'});assert.equal(before.episode,null);
+    await r.tick(2000);assert.deepEqual(r.clicks,{});
+    assert.equal((await r.message({type:'calibrate',key:before.key,episode:54})).ok,true);
+    assert.equal((await r.message({type:'status'})).target,61);
+    r.dom.reconfigure({url:'https://www.netflix.com/watch/9002'});
+    assert.equal((await r.message({type:'status'})).episode,null);
+    await r.tick(3000);await r.tick(5000);assert.deepEqual(r.clicks,{});
+  } finally {r.w.close();}
+});

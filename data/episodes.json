@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "researchedOn": "2026-10-06",
+  "researchedOn": "2026-10-09",
   "policy": "Classification is separate from viewing policy. Use the selected profile to decide skips.",
   "profiles": {
     "full-filler": {
@@ -11,12 +11,20 @@
       "name": "Tu lista",
       "source": "https://www.pccomponentes.com/blog/como-ver-anime-naruto-completo-sin-relleno",
       "providedBy": "Usuario en esta conversación",
-      "description": "Sigue tu guía, incluyendo los capítulos mixtos que marcaste para saltar.",
+      "description": "Sigue tus guías, incluyendo los capítulos mixtos y de canon del anime que marcaste para saltar.",
+      "seriesSources": {
+        "naruto": {"source":"https://www.pccomponentes.com/blog/como-ver-anime-naruto-completo-sin-relleno"},
+        "naruto-shippuden": {"source":"https://www.pccomponentes.com/blog/como-ver-anime-naruto-completo-sin-relleno"},
+        "one-piece": {"providedBy":"Usuario en esta conversación", "receivedOn":"2026-10-09", "description":"Lista de relleno por sagas proporcionada por el usuario. El 1084 se conserva; Fan Letter es un especial separado sin número de episodio principal."}
+      },
       "normalization": "Naruto 135 aparece para ver y para saltar. Se conserva; el salto comienza en 136.",
       "skipRanges": {
         "naruto": [[26,26],[97,97],[101,106],[136,219]],
-        "naruto-shippuden": [[57,70],[90,111],[144,151],[170,171],[176,196],[223,242],[258,260],[279,281],[284,295],[303,320],[347,361],[376,377],[389,390],[394,413],[416,417],[419,419],[422,423],[427,457],[460,462],[464,468],[480,483]]
-      }
+        "naruto-shippuden": [[57,70],[90,111],[144,151],[170,171],[176,196],[223,242],[258,260],[279,281],[284,295],[303,320],[347,361],[376,377],[389,390],[394,413],[416,417],[419,419],[422,423],[427,457],[460,462],[464,468],[480,483]],
+        "one-piece": [[54,60],[98,99],[102,102],[131,143],[196,206],[220,226],[279,283],[291,292],[303,303],[317,319],[326,336],[382,384],[406,407],[426,429],[457,458],[492,492],[499,499],[506,506],[542,542],[575,578],[590,590],[626,628],[747,751],[775,775],[780,782],[895,896],[907,907],[1029,1030]]
+      },
+      "fallback": "full-filler",
+      "fallbackDescription": "En las demás series, se aplica Solo relleno completo."
     }
   },
   "series": {
@@ -28,7 +36,14 @@
       "fillerRanges": [[57,71],[91,112],[144,151],[170,171],[176,196],[223,242],[257,260],[271,271],[279,281],[284,295],[303,320],[347,361],[376,377],[388,390],[394,413],[416,417],[422,423],[427,450],[464,468],[480,483]],
       "mixedRanges": [[1,19],[24,25],[45,45],[49,50],[54,54],[56,56],[89,90],[113,113],[115,115],[127,128],[213,213],[254,254],[296,296],[324,324],[327,328],[330,331],[338,338],[346,346],[362,362],[385,386],[415,415],[419,419],[426,426],[451,458],[460,462],[469,469],[471,472],[478,479]],
       "animeCanonRanges": [[28,28]],
-      "classificationDisagreements": [{"episode":28,"selected":"anime-canon","alternative":"filler","alternativeSource":"https://www.animefillerlist.tv/guide/naruto-shippuden/"}]
+      "classificationDisagreements": [
+        {
+          "episode": 28,
+          "selected": "anime-canon",
+          "alternative": "filler",
+          "alternativeSource": "https://www.animefillerlist.tv/guide/naruto-shippuden/"
+        }
+      ]
     },
     "naruto": {
       "name": "Naruto",
@@ -38,6 +53,64 @@
       "fillerRanges": [[26,26],[97,97],[101,106],[136,140],[143,219]],
       "mixedRanges": [[7,7],[9,9],[14,16],[18,21],[23,24],[27,30],[37,41],[43,47],[49,49],[52,60],[63,63],[66,66],[69,72],[74,74],[83,83],[98,100],[112,114],[126,127],[130,131],[141,142],[220,220]],
       "animeCanonRanges": []
+    },
+    "one-piece": {
+      "name": "One Piece",
+      "totalEpisodes": 1180,
+      "baseGuideTotalEpisodes": 1168,
+      "coverageExtension": {
+        "start": 1169,
+        "end": 1180,
+        "classification": "manga-canon",
+        "source": "https://www.animefillerlist.tv/guide/one-piece/",
+        "sourceUpdatedOn": "2026-09",
+        "checkedOn": "2026-10-09"
+      },
+      "source": "https://www.animefillerlist.com/shows/one-piece",
+      "sourceUpdatedOn": "2026-06-28",
+      "fillerRanges": [[54,60],[98,99],[102,102],[131,143],[196,206],[220,225],[279,283],[291,292],[303,303],[317,319],[326,336],[382,384],[406,407],[426,429],[457,458],[492,492],[542,542],[575,578],[590,590],[626,627],[747,750],[780,782],[895,896],[907,907],[1029,1030]],
+      "mixedRanges": [[45,47],[61,61],[68,69],[101,101],[226,226],[354,354],[421,421],[489,489],[520,520],[574,574],[625,625],[628,628],[633,633],[653,653],[657,657],[679,679],[690,690],[731,731],[738,738],[751,751],[777,778],[789,789],[803,803],[807,807],[878,879],[881,885],[887,890],[924,924],[988,989],[991,991]],
+      "animeCanonRanges": [[50,51],[93,93],[213,216],[418,420],[453,456],[497,499],[506,506],[737,737],[775,775],[1084,1084]],
+      "ongoing": true,
+      "netflixRequiresEpisodeConfirmation": true
+    },
+    "bleach": {
+      "name": "Bleach",
+      "totalEpisodes": 366,
+      "source": "https://www.animefillerlist.com/shows/bleach",
+      "sourceUpdatedOn": "2025-11-18",
+      "fillerRanges": [[33,33],[50,50],[64,108],[128,137],[147,149],[168,189],[204,205],[213,214],[228,266],[287,287],[298,299],[303,305],[311,341],[355,355]],
+      "mixedRanges": [[8,8],[27,27],[32,32],[46,46],[109,109],[111,111],[116,116],[119,120],[124,124],[141,141],[143,143],[146,146],[156,156],[160,161],[190,190],[193,193],[206,207],[209,209],[222,223],[267,268],[274,274],[276,276],[284,285],[288,288],[290,291],[295,296],[310,310],[342,343],[345,345],[347,347],[351,351],[357,357]],
+      "animeCanonRanges": [],
+      "edition": "Serie original de 2004, episodios 1–366. No incluye Thousand-Year Blood War."
+    },
+    "dragon-ball": {
+      "name": "Dragon Ball",
+      "totalEpisodes": 153,
+      "source": "https://www.animefillerlist.com/shows/dragon-ball",
+      "sourceUpdatedOn": "2020-10-10",
+      "fillerRanges": [[30,33],[45,45],[79,83],[127,132],[149,153]],
+      "mixedRanges": [[29,29],[42,42],[44,44]],
+      "animeCanonRanges": []
+    },
+    "dragon-ball-z": {
+      "name": "Dragon Ball Z",
+      "totalEpisodes": 291,
+      "source": "https://www.animefillerlist.com/shows/dragon-ball-z",
+      "sourceUpdatedOn": "2022-06-27",
+      "fillerRanges": [[9,10],[12,16],[39,43],[100,100],[102,102],[108,117],[124,125],[170,171],[174,174],[195,199],[202,203],[274,274],[288,288]],
+      "mixedRanges": [[11,11],[17,18],[20,20],[44,44],[204,204],[229,229],[251,251],[287,287]],
+      "animeCanonRanges": [],
+      "edition": "Dragon Ball Z original. No incluye Kai, Super, GT ni Daima."
+    },
+    "black-clover": {
+      "name": "Black Clover",
+      "totalEpisodes": 170,
+      "source": "https://www.animefillerlist.com/shows/black-clover",
+      "sourceUpdatedOn": "2025-07-15",
+      "fillerRanges": [[29,29],[66,66],[68,68],[82,82],[123,125],[131,131],[134,135],[142,149]],
+      "mixedRanges": [[2,2],[8,9],[12,12],[30,30],[69,69],[102,102]],
+      "animeCanonRanges": [[3,3],[13,13],[55,56],[130,130],[132,133],[136,141],[150,157]]
     }
   }
 }

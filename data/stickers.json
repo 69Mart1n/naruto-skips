@@ -1,0 +1,132 @@
+[
+  {
+    "file": "assets/stickers/straw-hat.png",
+    "name": "Sombrero de paja",
+    "sourcePage": "https://imgflip.com/memetemplate/420027909/Straw-Hat",
+    "imageUrl": "https://i.imgflip.com/6y2nlx.png",
+    "retrievedOn": "2026-10-09",
+    "sha256": "347206404575ead780ae49be308904af382e16a0e6b74b4a818b0a5f11313d59",
+    "bytes": 103688
+  },
+  {
+    "file": "assets/stickers/gum-fruit.avif",
+    "name": "Fruta de Luffy",
+    "sourcePage": "https://pngdownload.io/png-image/gomu-gomu-no-mi-one-piece-devil-fruit-luffys-power-source-transparent-png-image/",
+    "imageUrl": "https://pngdownload.io/wp-content/uploads/2025/08/Gomu-Gomu-no-Mi-One-Piece-Devil-Fruit.avif",
+    "retrievedOn": "2026-10-09",
+    "sha256": "263bae6d0f0caefcf8b2a2f034e5fe9129b6b72818fc1cdf7538287aa9680979",
+    "bytes": 127048
+  },
+  {
+    "file": "assets/stickers/ichigo-mask.png",
+    "name": "Máscara Hollow de Ichigo",
+    "sourcePage": "https://www.clipartmax.com/max/m2i8A0m2N4d3K9d3/",
+    "imageUrl": "https://www.clipartmax.com/png/full/226-2260131_ichigo-hollow-mask-by-hylian-shield-master-ichigo-hollow-mask-png.png",
+    "retrievedOn": "2026-10-09",
+    "sha256": "3516e74a5c175a019341e640a55410f8dbcebacb97fb820536e93862f56a4dbb",
+    "bytes": 111748
+  },
+  {
+    "file": "assets/stickers/shinigami-badge.png",
+    "name": "Insignia de shinigami sustituto",
+    "sourcePage": "https://www.pngkey.com/maxpic/u2w7a9y3e6i1e6i1/",
+    "imageUrl": "https://www.pngkey.com/png/full/169-1695428_open-bleach-insignia-shinigami-sustituto.png",
+    "retrievedOn": "2026-10-09",
+    "sha256": "740a61ab9cd5f0e8a46e90b5b4479d230de343d26d91bc186c80f116983ecb02",
+    "bytes": 80702
+  },
+  {
+    "file": "assets/stickers/dragon-ball.png",
+    "name": "Esfera de cuatro estrellas",
+    "sourcePage": "https://www.citypng.com/photo/27984/hd-dragon-ball-z-dbz-seven-crystal-balls-png",
+    "imageUrl": "https://www.citypng.com/public/uploads/preview/hd-png-dragon-ball-z-dbz-crystal-ball-4-stars-11664327357fukqwtt5yh.png",
+    "retrievedOn": "2026-10-09",
+    "sha256": "0f3fac1d042a81db064fa487949262eb1448c9689d46b943b7e967b52e221243",
+    "bytes": 56156
+  },
+  {
+    "file": "assets/stickers/nimbus.png",
+    "name": "Nube voladora",
+    "sourcePage": "https://www.nicepng.com/maxp/u2y3q8q8e6e6o0o0/",
+    "imageUrl": "https://www.nicepng.com/png/full/954-9546201_nube-nubevoladora-dragonball-kid-goku-iphone-x.png",
+    "retrievedOn": "2026-10-09",
+    "sha256": "9543beb38fa7da9b81c3721df613096d2a2f7a643ec0cd361bcca0da689729d1",
+    "bytes": 483051
+  },
+  {
+    "file": "assets/stickers/scouter.png",
+    "name": "Scouter",
+    "sourcePage": "https://www.pngaaa.com/detail/5584919",
+    "imageUrl": "https://image.pngaaa.com/919/5584919-middle.png",
+    "retrievedOn": "2026-10-09",
+    "sha256": "e9f5f6f9546b1f463140b0db9977b24f2880a9bfec9e4452707cfbb8a148736c",
+    "bytes": 148207
+  },
+  {
+    "file": "assets/stickers/great-ape.png",
+    "name": "Ozaru",
+    "sourcePage": "https://www.realclipart.com/middle/m2i8Z5Z5m2d3Z5d3_share-this-image-great-ape-dragon-ball-z/",
+    "imageUrl": "https://www.realclipart.com/png/middle/106-1061848_share-this-image-great-ape-dragon-ball-z.png",
+    "retrievedOn": "2026-10-09",
+    "sha256": "479e4581bd5586c311a56006855bc9230509157c5df2d960e4ad08d68e289d0d",
+    "bytes": 204258
+  },
+  {
+    "file": "assets/stickers/five-leaf-clover.png",
+    "name": "Trébol de cinco hojas",
+    "sourcePage": "https://www.stickpng.com/img/games/black-clover-quartet-knights/black-five-leaved-clover",
+    "imageUrl": "https://assets.stickpng.com/images/628c8637bbec114743bed4c2.png",
+    "retrievedOn": "2026-10-09",
+    "sha256": "0282ce94b45bf34f2edb2f105b2130e34ad1dd53e44a60fa3c54a34b4a67f130",
+    "bytes": 33775
+  },
+  {
+    "file": "assets/stickers/asta.png",
+    "name": "Asta con espada y grimorio",
+    "sourcePage": "https://sp.shonenjump.com/j/sp_bclover/story/index.html",
+    "imageUrl": "https://sp.shonenjump.com/j/sp_bclover/story/_img/chara1.png",
+    "retrievedOn": "2026-10-09",
+    "sha256": "ce3fbdae33ae0dcf03ae71593622767d7e9a7e8016ab0ab519d727c868b304b3",
+    "bytes": 200862
+  },
+  {
+    "file": "assets/stickers/dragon-ball-sticker.png",
+    "generatedWith": "image_gen built-in",
+    "mode": "background-extraction",
+    "editTarget": "assets/stickers/dragon-ball.png",
+    "promptDocument": "STICKERS.md",
+    "createdOn": "2026-10-09",
+    "sha256": "c8549d30de48f334e6dfad403127c032492243cfe1da7d1291b69bcda1ac4f48",
+    "bytes": 1196138
+  },
+  {
+    "file": "assets/stickers/scouter-sticker.png",
+    "generatedWith": "image_gen built-in",
+    "mode": "background-extraction",
+    "editTarget": "assets/stickers/scouter.png",
+    "promptDocument": "STICKERS.md",
+    "createdOn": "2026-10-09",
+    "sha256": "25fd814a5783793e219c248220845d37ab8e5326905bd36e96bbb338cf1e1913",
+    "bytes": 848734
+  },
+  {
+    "file": "assets/stickers/great-ape-sticker.png",
+    "generatedWith": "image_gen built-in",
+    "mode": "background-extraction",
+    "editTarget": "assets/stickers/great-ape.png",
+    "promptDocument": "STICKERS.md",
+    "createdOn": "2026-10-09",
+    "sha256": "fd9ff0535d0277444f3cfa05e690521dc554b8232f2193d1bdf9f9b0b39a1a0b",
+    "bytes": 1371557
+  },
+  {
+    "file": "assets/stickers/gum-fruit-sticker.png",
+    "generatedWith": "image_gen built-in",
+    "mode": "generate",
+    "editTarget": null,
+    "promptDocument": "STICKERS.md",
+    "createdOn": "2026-10-09",
+    "sha256": "259c60688c80bd8adafd1b9cc332cea6dc803657a1c8952d237a2dd83bd9e977",
+    "bytes": 1505349
+  }
+]

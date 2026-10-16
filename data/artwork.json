@@ -1,0 +1,44 @@
+{
+  "naruto": {
+    "file": "assets/series/naruto.jpg",
+    "sourcePage": "https://www.animefillerlist.com/shows/naruto",
+    "imageUrl": "https://www.animefillerlist.com/sites/default/files/styles/anime_poster/public/17405_1.jpg?itok=54yMdohT",
+    "retrievedOn": "2026-10-09"
+  },
+  "naruto-shippuden": {
+    "file": "assets/series/naruto-shippuden.png",
+    "sourcePage": "https://www.animefillerlist.com/shows/naruto-shippuden",
+    "imageUrl": "https://www.animefillerlist.com/sites/default/files/styles/anime_poster/public/screenshot_2021-04-19_naruto-shippuden-1131_webp_webp_image_350_x_525_pixels_0.png?itok=dpibYojN",
+    "retrievedOn": "2026-10-09"
+  },
+  "one-piece": {
+    "file": "assets/series/one-piece.jpg",
+    "sourcePage": "https://www.animefillerlist.com/shows/one-piece",
+    "imageUrl": "https://www.animefillerlist.com/sites/default/files/styles/anime_poster/public/qwdexigf_4x.jpg?itok=qzVAFeVp",
+    "retrievedOn": "2026-10-09"
+  },
+  "bleach": {
+    "file": "assets/series/bleach.jpg",
+    "sourcePage": "https://www.animefillerlist.com/shows/bleach",
+    "imageUrl": "https://www.animefillerlist.com/sites/default/files/styles/anime_poster/public/img_0253.jpg?itok=QZa5Rmj2",
+    "retrievedOn": "2026-10-09"
+  },
+  "dragon-ball": {
+    "file": "assets/series/dragon-ball.jpg",
+    "sourcePage": "https://www.animefillerlist.com/shows/dragon-ball",
+    "imageUrl": "https://www.animefillerlist.com/sites/default/files/styles/anime_poster/public/mv5bmjrlytyymdutogy5mc00mmfiltljotmtm2qzowzjmwvin2fil2ltywdlxkeyxkfqcgdeqxvyntayodkwoq._v1_.jpg?itok=wZTchMQ9",
+    "retrievedOn": "2026-10-09"
+  },
+  "dragon-ball-z": {
+    "file": "assets/series/dragon-ball-z.jpg",
+    "sourcePage": "https://www.animefillerlist.com/shows/dragon-ball-z",
+    "imageUrl": "https://www.animefillerlist.com/sites/default/files/styles/anime_poster/public/ab001b1cb053ec0d7b1b47b0f7bf98e71647329181_full.jpg?itok=3mh1SPvQ",
+    "retrievedOn": "2026-10-09"
+  },
+  "black-clover": {
+    "file": "assets/series/black-clover.jpg",
+    "sourcePage": "https://www.animefillerlist.com/shows/black-clover",
+    "imageUrl": "https://www.animefillerlist.com/sites/default/files/styles/anime_poster/public/5922b447-b04f-489d-85e1-af8735a191ea.jpeg?itok=UkU5YPqp",
+    "retrievedOn": "2026-10-09"
+  }
+}

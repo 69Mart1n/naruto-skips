@@ -20,16 +20,16 @@
   let clicked = new WeakSet();
   function compute() {
     const raw = adapter.read();
-    if (!raw) return { platform, reason: 'Abrí Naruto o Naruto Shippuden y mostrá los controles.' };
-    const episode = raw.absolute ?? C.absoluteEpisode(platform, raw.series, raw.position, settings?.mappings ?? {}, D);
+    if (!raw) return { platform, reason: 'Abrí uno de los siete animes compatibles y mostrá los controles.' };
+    const episode = raw.absolute ?? C.absoluteEpisode(platform, raw.series, raw.position, settings?.mappings ?? {}, D, raw.mappingScope);
     const key = `${raw.series}:${raw.route}:${raw.position?.season}:${raw.position?.episode}:${episode}`;
     const type = C.classify(D, raw.series, episode);
-    const watchProfile = settings?.watchProfile ?? defaults.watchProfile;
+    const watchProfile = C.effectiveProfile(D, settings?.watchProfile ?? defaults.watchProfile, raw.series);
     const keep = settings?.keep[raw.series] ?? [];
     const omit = C.shouldSkip(D, raw.series, episode, keep, watchProfile);
     const target = C.targetEpisode(D, raw.series, episode, keep, watchProfile);
     const profileName = D.profiles[watchProfile]?.name ?? 'Guía desconocida';
-    return { ...raw, platform, episode, key, type, target, omit, watchProfile, reason: !raw.position ? 'No se pudo leer el número. Mostrá los controles.' : !episode ? 'Confirmá el capítulo absoluto para esta temporada en el panel.' : omit ? `${profileName}: se omite este capítulo. Retomar en ${target}.` : `${profileName}: este capítulo se conserva.` };
+    return { ...raw, platform, episode, key, type, target, omit, watchProfile, reason: !raw.position ? 'No se pudo leer el número. Mostrá los controles.' : !episode ? raw.mappingScope ? 'Confirmá que estás viendo el anime de One Piece y su capítulo absoluto. La versión live action no es compatible.' : 'Confirmá el capítulo absoluto para esta temporada en el panel.' : !type ? 'Este capítulo todavía no está cubierto por la guía.' : omit ? target ? `${profileName}: se omite este capítulo. Retomar en ${target}.` : `${profileName}: relleno al final de la serie. No hay otro capítulo cubierto para saltar.` : `${profileName}: este capítulo se conserva.` };
   }
   function clickOnce(el) {
     if (!A.isVisible(el) || clicked.has(el)) return false;
@@ -62,6 +62,7 @@
       }
       if (isTop && blockedKey === state.key) status.reason = 'El salto no se confirmó. Usá Reintentar en el panel.';
       if (!settings.enabled || !state.series || !state.key || now - stableSince < 1500 || pending || blockedKey === state.key) return;
+      if (state.mappingScope && !state.episode) return;
       if (isTop && settings.skipFiller && state.omit && state.target > state.episode) {
         const route = adapter.targetRoute?.(state,state.target);
         if (route) {
@@ -81,7 +82,7 @@
       if (settings.nextEpisode && state.episode !== D.series[state.series]?.totalEpisodes) startNavigation(adapter.endNext(), state);
     } catch (error) {
       if (isTop) status.reason = 'No se pudo leer el reproductor. Recargá la página.';
-      console.debug('[Naruto Skips]', error.message);
+      console.debug('[Anime Skips]', error.message);
     } finally { running = false; }
   }
   function schedule() { if (timeout === null) timeout = setTimeout(() => { timeout = null; void scan(); }, 200); }
@@ -104,7 +105,7 @@
       const state = compute();
       const absolute = message.episode;
       if (state.key !== message.key || !state.series || !state.position || !C.classify(D, state.series, absolute) || absolute < state.position.episode) { reply({ ok: false, reason: 'El episodio cambió o el número es inválido. Actualizá el panel.' }); return; }
-      const key = C.mappingKey(platform, state.series, state.position.season);
+      const key = C.mappingKey(platform, state.series, state.position.season, state.mappingScope);
       const mappings = { ...settings.mappings, [key]: absolute - state.position.episode };
       chrome.storage.local.set({ mappings }).then(() => { settings.mappings = mappings; schedule(); reply({ ok: true }); }).catch(() => reply({ ok: false, reason: 'No se pudo guardar.' }));
       return true;

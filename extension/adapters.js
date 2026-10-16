@@ -33,7 +33,10 @@
       }
       // A missing season must never reuse an unlabelled offset across Netflix seasons.
       if (position?.season === null) position = null;
-      return { series, position, route: location.pathname, absolute: null };
+      // Netflix uses the same title for One Piece's anime and live-action editions.
+      // Unknown IDs require confirmation per route, preventing reuse across editions.
+      const mappingScope = globalThis.NarutoData?.series[series]?.netflixRequiresEpisodeConfirmation ? location.pathname : null;
+      return { series, position, route: location.pathname, absolute: null, mappingScope };
     },
     intro: () => firstVisible('[data-uia="player-skip-intro"]'),
     recap: () => firstVisible('[data-uia="player-skip-recap"]'),
@@ -56,8 +59,8 @@
       const position = C.parsePosition(info?.querySelector('h1.title')?.textContent);
       if (!series) return null;
       // Confirmed against E303 on the official Shippuden page, with this exact series ID.
-      const seriesId = series === 'naruto-shippuden' ? 'GYQ4MW246' : 'GY9PJ5KWR';
-      const knownAbsoluteSeries = new RegExp(`/series/${seriesId}(?:/|$)`).test(titleLink?.getAttribute('href') ?? '');
+      const seriesId = { 'naruto-shippuden':'GYQ4MW246', naruto:'GY9PJ5KWR' }[series];
+      const knownAbsoluteSeries = !!seriesId && new RegExp(`/series/${seriesId}(?:/|$)`).test(titleLink?.getAttribute('href') ?? '');
       const absolute = knownAbsoluteSeries && position?.season === null ? position.episode : null;
       return { series, position, route: location.pathname, absolute };
     },
