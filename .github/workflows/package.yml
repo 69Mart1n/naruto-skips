@@ -1,0 +1,21 @@
+name: Verify and package extension
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      # Check BEFORE npm ci: its prepare hook must not hide stale committed files.
+      - run: node scripts/prepare.mjs --check
+      - run: npm ci
+      - run: npm run package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naruto-skips-instalable
+          path: |
+            dist/*-instalable.zip
+            dist/*-instalable.zip.sha256
